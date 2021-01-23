@@ -1,0 +1,7 @@
+1566825592527	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.0idYtNsTUKx0"
+1566825597802	Marionette	INFO	Listening on port 35903
+1566825597844	Marionette	WARN	TLS certificate errors will be ignored for this session
+1566825598651	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.MPoKbJGtQ60H"
+1566825605816	Marionette	INFO	Listening on port 42619
+1566825605872	Marionette	WARN	TLS certificate errors will be ignored for this session
+1566825606280	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.TSnR5PM7uFZN"
