@@ -14,6 +14,7 @@ import os
 from os import listdir
 from os.path import isfile, join
 from collections import defaultdict
+import matplotlib
 import matplotlib.pyplot as plt 
 
 # Preprocesses the feature data folder
@@ -471,6 +472,9 @@ def plotAvgRatingWinRate(mypath):
     return avgRatingRank                   
                             
 def main():
+    matplotlib.rcParams.update({'font.size': 15})
+    matplotlib.rcParams['text.usetex'] = True
+    
     # Preprocessing the data
     # Change the argument to the path with the backpacks-Search/backpacksOverall folder 
     rank_winners, rank_sellers, rank_win_rate, posfb_sellers, avgRating_sellers = preprocess(os.getcwd())
@@ -478,7 +482,7 @@ def main():
     print("================================ EXPERIMENT 1 ================================\n")
     
     # Plotting the Rank vs Win-Rate % plot 
-    fig = plt.figure(figsize=(7.5,5))
+    fig = plt.figure(figsize=(9,6))
     axes = fig.add_axes([0.1,0.1,0.8,0.8])
     axes.set_ylim([-2, 105])
     x = list(rank_win_rate.keys())
@@ -487,7 +491,7 @@ def main():
     plt.xlabel('Rank') 
     plt.ylabel('Win-Rate %') 
     plt.title('Rank vs Win-Rate')  
-    plt.show() 
+    plt.savefig('All_prod_rank_vs_win_rate.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25)
     
     # Plotting the cumulative plot of Positive Feedback vs Win-Rate
     fig = plt.figure(figsize=(9, 6))
@@ -534,7 +538,7 @@ def main():
     
     # Plotting the plot of distribution of buy box winners with their price ranks
     priceRank = plotPriceWinRate(os.getcwd())
-    fig = plt.figure(figsize=(7.5,5))
+    fig = plt.figure(figsize=(9,6))
     axes = fig.add_axes([0.1,0.1,0.8,0.8])
     axes.set_ylim([-2, 105])
     plt_x3 = list(priceRank.keys())
@@ -548,11 +552,11 @@ def main():
     plt.xlabel('Price Rank') 
     plt.ylabel('Percentage of Winners') 
     plt.title('Distribution of winners with Price ranks')  
-    plt.show() 
+    plt.savefig('All_prod_winner_distribution_with_price_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
     # Plotting the plot of distribution of buy box winners with their positive feedback ranks
     posFbRank = plotPosfbWinRate(os.getcwd())
-    fig = plt.figure(figsize=(7.5,5))
+    fig = plt.figure(figsize=(9,6))
     axes = fig.add_axes([0.1,0.1,0.8,0.8])
     axes.set_ylim([-2, 105])
     plt_x4 = list(posFbRank.keys())
@@ -566,11 +570,11 @@ def main():
     plt.xlabel('Positive Feedback Rank') 
     plt.ylabel('Percentage of Winners') 
     plt.title('Distribution of winners with Positive Feedback ranks')  
-    plt.show()
+    plt.savefig('All_prod_winner_distribution_with_posfb_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
     # Plotting the plot of distribution of buy box winners with their rating count ranks
     ratingCntRank = plotRatingCntWinRate(os.getcwd())
-    fig = plt.figure(figsize=(7.5,5))
+    fig = plt.figure(figsize=(9,6))
     axes = fig.add_axes([0.1,0.1,0.8,0.8])
     axes.set_ylim([-2, 105])
     plt_x5 = list(ratingCntRank.keys())
@@ -584,11 +588,11 @@ def main():
     plt.xlabel('Rating Count Rank') 
     plt.ylabel('Percentage of Winners') 
     plt.title('Distribution of winners with Rating Count ranks')  
-    plt.show()
+    plt.savefig('All_prod_winner_distribution_with_ratingCnt_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
     # Plotting the plot of distribution of buy box winners with their average rating ranks
     avgRatingRank = plotAvgRatingWinRate(os.getcwd())
-    fig = plt.figure(figsize=(7.5,5))
+    fig = plt.figure(figsize=(9,6))
     axes = fig.add_axes([0.1,0.1,0.8,0.8])
     axes.set_ylim([-2, 105])
     plt_x6 = list(avgRatingRank.keys())
@@ -602,7 +606,7 @@ def main():
     plt.xlabel('Average Rating Rank') 
     plt.ylabel('Percentage of Winners') 
     plt.title('Distribution of winners with Average Rating ranks')  
-    plt.show()
+    plt.savefig('All_prod_winner_distribution_with_avgRating_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
 if __name__=='__main__':
     main()    

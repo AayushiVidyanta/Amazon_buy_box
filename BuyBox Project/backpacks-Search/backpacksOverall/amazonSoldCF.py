@@ -21,6 +21,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import SimpleImputer
 from sklearn import metrics
 from sklearn.feature_selection import chi2
+import matplotlib
+import matplotlib.lines as mlines
 import matplotlib.pyplot as plt 
 import os
 from collections import defaultdict
@@ -32,6 +34,7 @@ def amazonSoldProducts(mypath):
     amazonSold = []
     folders = [f for f in listdir(mypath) if os.path.isdir(mypath+'/'+f)]
     for folder in folders:
+        #print(folder)
         onlyfiles = [f for f in listdir(folder+'/features/') if isfile(join(folder+'/features/', f))]
         
         for i in onlyfiles:
@@ -82,13 +85,7 @@ def amazonSoldProducts(mypath):
 # sellers is a dictionary. sellers[product ID] is the number of competing sellers for the product with that product ID
 def preprocess_amazon_sold_products(mypath, amazonSold):
     data = []
-    folders = [f for f in listdir(mypath)]
-    folders.remove("algorithmicPricing.py")
-    folders.remove("rank_win_rate.py")
-    folders.remove("randomForest.py")
-    folders.remove("amazonSoldProductsRandomForest.py")
-    folders.remove("counterfactualFairness.py")
-    folders.remove("amazonSoldCF.py")
+    folders = [f for f in listdir(mypath) if os.path.isdir(mypath+'/'+f)]
     sellers = dict()
     row_no = 0
     l = 0
@@ -180,6 +177,9 @@ def printSpaces(n):
     print(' '*n, end='')
     
 def main():
+    matplotlib.rcParams.update({'font.size': 15})
+    matplotlib.rcParams['text.usetex'] = True
+    
     # Finding the Amazon sold products
     amazonSold = amazonSoldProducts(os.getcwd())
     
@@ -307,14 +307,14 @@ def main():
     fig = plt.figure(figsize=(9,6))
     axes = fig.add_axes([0.1,0.1,0.8,0.8])
     axes.set_ylim([0, 105])
-    axes.plot(plt_x1, plt_y1, linewidth='2')
-    axes.plot(plt_x2, plt_y2, 'r--', color='orange', linewidth='2')
-    axes.plot(plt_x3, plt_y3, color='green', linewidth='2', linestyle=':')
-    plt.legend(["Prediction", "Baseline: Lowest Price", "Baseline: Lowest Rank"])
+    axes.plot(plt_x1, plt_y1, linewidth='2', marker='*')
+    axes.plot(plt_x2, plt_y2, 'r--', color='orange', linewidth='2', marker='s')
+    axes.plot(plt_x3, plt_y3, color='green', linewidth='2', linestyle=':', marker='^')
+    plt.legend (["Prediction", "Baseline: Lowest Price", "Baseline: Lowest Rank"], fontsize = 15, loc='upper left', bbox_to_anchor=(1.05, 1), fancybox=True, shadow=True, ncol=1)
     plt.xlabel('Number of sellers') 
     plt.ylabel('Accuracy') 
     plt.title('Number of Sellers vs Accuracy')  
-    plt.show() 
+    plt.savefig('Amazon_sold_prod_no_of_sellers_vs_accuracy_70-30_split_CF.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25)
     
     # Chi-square test (Experiment 3)
     # Regularizing the train set with MinMaxScaler

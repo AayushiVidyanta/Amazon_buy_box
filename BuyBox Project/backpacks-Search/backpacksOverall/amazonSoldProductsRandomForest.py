@@ -22,6 +22,7 @@ from sklearn.impute import SimpleImputer
 from sklearn import metrics
 import matplotlib.pyplot as plt 
 import os
+import matplotlib
 from collections import defaultdict
 
 # Finds the Amazon sold products from the feature data folder
@@ -613,6 +614,9 @@ def printSpaces(n):
     print(' '*n, end='')
     
 def main():
+    matplotlib.rcParams.update({'font.size': 15})
+    matplotlib.rcParams['text.usetex'] = True
+    
     # Finding the Amazon sold products
     # Change the argument to the path with the backpacks-Search/backpacksOverall folder 
     amazonSold, fba = amazonSoldProducts(os.getcwd())
@@ -749,14 +753,14 @@ def main():
     fig = plt.figure(figsize=(9,6))
     axes = fig.add_axes([0.1,0.1,0.8,0.8])
     axes.set_ylim([0, 105])
-    axes.plot(plt_x1, plt_y1, linewidth='2')
-    axes.plot(plt_x2, plt_y2, 'r--', color='orange', linewidth='2')
-    axes.plot(plt_x3, plt_y3, color='green', linewidth='2', linestyle=':')
-    plt.legend(["Prediction", "Baseline: Lowest Price", "Baseline: Lowest Rank"])
+    axes.plot(plt_x1, plt_y1, linewidth='2', marker='*')
+    axes.plot(plt_x2, plt_y2, 'r--', color='orange', linewidth='2', marker='s')
+    axes.plot(plt_x3, plt_y3, color='green', linewidth='2', linestyle=':', marker='^')
+    plt.legend (["Prediction", "Baseline: Lowest Price", "Baseline: Lowest Rank"], fontsize = 15, loc='upper left', bbox_to_anchor=(1.05, 1), fancybox=True, shadow=True, ncol=1)
     plt.xlabel('Number of sellers') 
     plt.ylabel('Accuracy') 
     plt.title('Number of Sellers vs Accuracy')  
-    plt.show() 
+    plt.savefig('Amazon_sold_prod_no_of_sellers_vs_accuracy_70-30_split.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25)
     
     # Getting the percentage of buy box winners who satisfy certain conditions as mentioned below
     # Change the argument to the path with the backpacks-Search/backpacksOverall folder 
@@ -768,7 +772,7 @@ def main():
     
     # Plotting the plot of distribution of buy box winners with their price ranks
     priceRank = plotPriceWinRate(os.getcwd(), amazonSold)
-    fig = plt.figure(figsize=(7.5, 5))
+    fig = plt.figure(figsize=(9, 6))
     axes = fig.add_axes([0.1,0.1,0.8,0.8])
     axes.set_ylim([-2, 105])
     plt_x3 = list(priceRank.keys())
@@ -782,11 +786,11 @@ def main():
     plt.xlabel('Price Rank') 
     plt.ylabel('Percentage of Winners') 
     plt.title('Distribution of winners with Price ranks')  
-    plt.show() 
+    plt.savefig('Amazon_sold_prod_winner_distribution_with_price_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
     # Plotting the plot of distribution of buy box winners with their ranks
     ranks = plotRankWinRate(os.getcwd(), amazonSold)
-    fig = plt.figure(figsize=(7.5, 5))
+    fig = plt.figure(figsize=(9, 6))
     axes = fig.add_axes([0.1,0.1,0.8,0.8])
     axes.set_ylim([-2, 105])
     plt_x3 = list(ranks.keys())
@@ -800,11 +804,11 @@ def main():
     plt.xlabel('Rank') 
     plt.ylabel('Percentage of Winners') 
     plt.title('Distribution of winners with Ranks')  
-    plt.show() 
+    plt.savefig('Amazon_sold_prod_winner_distribution_with_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
     # Plotting the plot of distribution of buy box winners with their positive feedback ranks
     posFbRank = plotPosfbWinRate(os.getcwd(), amazonSold)
-    fig = plt.figure(figsize=(7.5, 5))
+    fig = plt.figure(figsize=(9, 6))
     axes = fig.add_axes([0.1,0.1,0.8,0.8])
     axes.set_ylim([-2, 105])
     plt_x4 = list(posFbRank.keys())
@@ -818,11 +822,11 @@ def main():
     plt.xlabel('Positive Feedback Rank') 
     plt.ylabel('Percentage of Winners') 
     plt.title('Distribution of winners with Positive Feedback ranks')  
-    plt.show()
+    plt.savefig('Amazon_sold_prod_winner_distribution_with_posfb_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
     # Plotting the plot of distribution of buy box winners with their rating count ranks
     ratingCntRank = plotRatingCntWinRate(os.getcwd(), amazonSold)
-    fig = plt.figure(figsize=(7.5, 5))
+    fig = plt.figure(figsize=(9, 6))
     axes = fig.add_axes([0.1,0.1,0.8,0.8])
     axes.set_ylim([-2, 105])
     plt_x5 = list(ratingCntRank.keys())
@@ -836,11 +840,11 @@ def main():
     plt.xlabel('Rating Count Rank') 
     plt.ylabel('Percentage of Winners') 
     plt.title('Distribution of winners with Rating Count ranks')  
-    plt.show()
+    plt.savefig('Amazon_sold_prod_winner_distribution_with_ratingCnt_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
     # Plotting the plot of distribution of buy box winners with their average rating ranks
     avgRatingRank = plotAvgRatingWinRate(os.getcwd(), amazonSold)
-    fig = plt.figure(figsize=(7.5, 5))
+    fig = plt.figure(figsize=(9, 6))
     axes = fig.add_axes([0.1,0.1,0.8,0.8])
     axes.set_ylim([-2, 105])
     plt_x6 = list(avgRatingRank.keys())
@@ -854,7 +858,7 @@ def main():
     plt.xlabel('Average Rating Rank') 
     plt.ylabel('Percentage of Winners') 
     plt.title('Distribution of winners with Average Rating ranks')  
-    plt.show()
+    plt.savefig('Amazon_sold_prod_winner_distribution_with_avgRating_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
 
 if __name__=='__main__':
 	main()    
