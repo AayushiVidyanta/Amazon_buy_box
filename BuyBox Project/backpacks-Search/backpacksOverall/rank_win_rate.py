@@ -472,7 +472,7 @@ def plotAvgRatingWinRate(mypath):
     return avgRatingRank                   
                             
 def main():
-    matplotlib.rcParams.update({'font.size': 15})
+    matplotlib.rcParams.update({'font.size': 20})
     matplotlib.rcParams['text.usetex'] = True
     
     # Preprocessing the data
@@ -490,7 +490,7 @@ def main():
     axes.plot(x, y, color='red')
     plt.xlabel('Rank') 
     plt.ylabel('Win-Rate %') 
-    plt.title('Rank vs Win-Rate')  
+    #plt.title('Rank vs Win-Rate')  
     plt.savefig('All_prod_rank_vs_win_rate.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25)
     
     # Plotting the cumulative plot of Positive Feedback vs Win-Rate
@@ -551,7 +551,7 @@ def main():
     axes.plot(plt_x3, plt_y3, color='red')
     plt.xlabel('Price Rank') 
     plt.ylabel('Percentage of Winners') 
-    plt.title('Distribution of winners with Price ranks')  
+    #plt.title('Distribution of winners with Price ranks')  
     plt.savefig('All_prod_winner_distribution_with_price_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
     # Plotting the plot of distribution of buy box winners with their positive feedback ranks
@@ -569,7 +569,7 @@ def main():
     axes.plot(plt_x4, plt_y4, color='red')
     plt.xlabel('Positive Feedback Rank') 
     plt.ylabel('Percentage of Winners') 
-    plt.title('Distribution of winners with Positive Feedback ranks')  
+    #plt.title('Distribution of winners with Positive Feedback ranks')  
     plt.savefig('All_prod_winner_distribution_with_posfb_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
     # Plotting the plot of distribution of buy box winners with their rating count ranks
@@ -587,7 +587,7 @@ def main():
     axes.plot(plt_x5, plt_y5, color='red')
     plt.xlabel('Rating Count Rank') 
     plt.ylabel('Percentage of Winners') 
-    plt.title('Distribution of winners with Rating Count ranks')  
+    #plt.title('Distribution of winners with Rating Count ranks')  
     plt.savefig('All_prod_winner_distribution_with_ratingCnt_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
     # Plotting the plot of distribution of buy box winners with their average rating ranks
@@ -605,7 +605,7 @@ def main():
     axes.plot(plt_x6, plt_y6, color='red')
     plt.xlabel('Average Rating Rank') 
     plt.ylabel('Percentage of Winners') 
-    plt.title('Distribution of winners with Average Rating ranks')  
+    #plt.title('Distribution of winners with Average Rating ranks')  
     plt.savefig('All_prod_winner_distribution_with_avgRating_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
 if __name__=='__main__':

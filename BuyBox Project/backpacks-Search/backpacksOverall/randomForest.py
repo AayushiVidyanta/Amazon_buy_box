@@ -232,7 +232,7 @@ def printSpaces(n):
     print(' '*n, end='')
     
 def main():    
-    matplotlib.rcParams.update({'font.size': 15})
+    matplotlib.rcParams.update({'font.size': 20})
     matplotlib.rcParams['text.usetex'] = True
     
     # Preprocessing the data
@@ -356,7 +356,7 @@ def main():
     plt.legend (["Prediction", "Baseline: Lowest Price", "Baseline: Lowest Rank"], fontsize = 15, loc='upper left', bbox_to_anchor=(1.05, 1), fancybox=True, shadow=True, ncol=1)
     plt.xlabel('Number of sellers') 
     plt.ylabel('Accuracy') 
-    plt.title('Number of Sellers vs Accuracy')  
+    #plt.title('Number of Sellers vs Accuracy')  
     plt.savefig('All_prod_no_of_sellers_vs_accuracy_70-30_split.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25)
 
 if __name__=='__main__':

@@ -614,7 +614,7 @@ def printSpaces(n):
     print(' '*n, end='')
     
 def main():
-    matplotlib.rcParams.update({'font.size': 15})
+    matplotlib.rcParams.update({'font.size': 20})
     matplotlib.rcParams['text.usetex'] = True
     
     # Finding the Amazon sold products
@@ -759,7 +759,7 @@ def main():
     plt.legend (["Prediction", "Baseline: Lowest Price", "Baseline: Lowest Rank"], fontsize = 15, loc='upper left', bbox_to_anchor=(1.05, 1), fancybox=True, shadow=True, ncol=1)
     plt.xlabel('Number of sellers') 
     plt.ylabel('Accuracy') 
-    plt.title('Number of Sellers vs Accuracy')  
+    #plt.title('Number of Sellers vs Accuracy')  
     plt.savefig('Amazon_sold_prod_no_of_sellers_vs_accuracy_70-30_split.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25)
     
     # Getting the percentage of buy box winners who satisfy certain conditions as mentioned below
@@ -785,7 +785,7 @@ def main():
     axes.plot(plt_x3, plt_y3, color='red')
     plt.xlabel('Price Rank') 
     plt.ylabel('Percentage of Winners') 
-    plt.title('Distribution of winners with Price ranks')  
+    #plt.title('Distribution of winners with Price ranks')  
     plt.savefig('Amazon_sold_prod_winner_distribution_with_price_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
     # Plotting the plot of distribution of buy box winners with their ranks
@@ -803,7 +803,7 @@ def main():
     axes.plot(plt_x3, plt_y3, color='red')
     plt.xlabel('Rank') 
     plt.ylabel('Percentage of Winners') 
-    plt.title('Distribution of winners with Ranks')  
+    #plt.title('Distribution of winners with Ranks')  
     plt.savefig('Amazon_sold_prod_winner_distribution_with_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
     # Plotting the plot of distribution of buy box winners with their positive feedback ranks
@@ -821,7 +821,7 @@ def main():
     axes.plot(plt_x4, plt_y4, color='red')
     plt.xlabel('Positive Feedback Rank') 
     plt.ylabel('Percentage of Winners') 
-    plt.title('Distribution of winners with Positive Feedback ranks')  
+    #plt.title('Distribution of winners with Positive Feedback ranks')  
     plt.savefig('Amazon_sold_prod_winner_distribution_with_posfb_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
     # Plotting the plot of distribution of buy box winners with their rating count ranks
@@ -839,7 +839,7 @@ def main():
     axes.plot(plt_x5, plt_y5, color='red')
     plt.xlabel('Rating Count Rank') 
     plt.ylabel('Percentage of Winners') 
-    plt.title('Distribution of winners with Rating Count ranks')  
+    #plt.title('Distribution of winners with Rating Count ranks')  
     plt.savefig('Amazon_sold_prod_winner_distribution_with_ratingCnt_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
     
     # Plotting the plot of distribution of buy box winners with their average rating ranks
@@ -857,7 +857,7 @@ def main():
     axes.plot(plt_x6, plt_y6, color='red')
     plt.xlabel('Average Rating Rank') 
     plt.ylabel('Percentage of Winners') 
-    plt.title('Distribution of winners with Average Rating ranks')  
+    #plt.title('Distribution of winners with Average Rating ranks')  
     plt.savefig('Amazon_sold_prod_winner_distribution_with_avgRating_rank.pdf', transparent= True, bbox_inches='tight', dpi = 500, pad_inches = 0.25) 
 
 if __name__=='__main__':
