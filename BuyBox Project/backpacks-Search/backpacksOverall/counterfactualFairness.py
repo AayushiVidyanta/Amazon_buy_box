@@ -23,7 +23,7 @@ from sklearn import metrics
 import matplotlib
 import matplotlib.pyplot as plt
 import os 
-from collections import defaultdict
+from sklearn.metrics import precision_recall_fscore_support
 
 # Preprocesses the feature data folder
 # Returns features, sellers, winAmazon
@@ -191,6 +191,17 @@ def main():
     y_pred_org = clf.predict(X_test_org)
     accuracy_org = metrics.accuracy_score(y_test, y_pred_org)
     print("Accuracy on original test set:", accuracy_org)  
+    prec_org, rec_org, f1_org, sup_org = precision_recall_fscore_support(y_test, y_pred_org, labels=[0, 1])
+    print("------------- Class 0 -------------")
+    print("Precision:", prec_org[0])
+    print("Recall", rec_org[0])
+    print("F1-score:", f1_org[0])
+    print("------------- Class 1 -------------")
+    print("Precision:", prec_org[1])
+    print("Recall", rec_org[1])
+    print("F1-score:", f1_org[1])
+    print("\nMacro F1:", sum(f1_org)/len(f1_org))
+    print()
     
     # Finding the TPR (True Positive Rate), FPR (False Positive Rate) for various thresholds on original test set
     y_probs_org = clf.predict_proba(X_test_org)
@@ -207,6 +218,17 @@ def main():
     y_pred_ctf = clf.predict(X_test_ctf)
     accuracy_ctf = metrics.accuracy_score(y_test, y_pred_ctf)
     print("Accuracy on counterfactual test set:", accuracy_ctf)
+    prec_ctf, rec_ctf, f1_ctf, sup_ctf = precision_recall_fscore_support(y_test, y_pred_ctf, labels=[0, 1])
+    print("------------- Class 0 -------------")
+    print("Precision:", prec_ctf[0])
+    print("Recall", rec_ctf[0])
+    print("F1-score:", f1_ctf[0])
+    print("------------- Class 1 -------------")
+    print("Precision:", prec_ctf[1])
+    print("Recall", rec_ctf[1])
+    print("F1-score:", f1_ctf[1])
+    print("\nMacro F1:", sum(f1_ctf)/len(f1_ctf))
+    print()
     
     # Finding the TPR (True Positive Rate), FPR (False Positive Rate) for various thresholds on counterfactual test set
     y_probs_ctf = clf.predict_proba(X_test_ctf)

@@ -22,6 +22,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import os 
 from collections import defaultdict
+from sklearn.metrics import precision_recall_fscore_support
 
 # Preprocesses the feature data folder
 # Returns features, sellers, winAmazon
@@ -313,6 +314,16 @@ def main():
     y_pred = clf.predict(X_test)
     accuracy = metrics.accuracy_score(y_test, y_pred)
     print("Test Accuracy:", accuracy)
+    prec, rec, f1, sup = precision_recall_fscore_support(y_test, y_pred, labels=[0, 1])
+    print("------------- Class 0 -------------")
+    print("Precision:", prec[0])
+    print("Recall", rec[0])
+    print("F1-score:", f1[0])
+    print("------------- Class 1 -------------")
+    print("Precision:", prec[1])
+    print("Recall", rec[1])
+    print("F1-score:", f1[1])
+    print("\nMacro F1:", sum(f1)/len(f1))
     
     # Grouping test samples by the number of competing sellers and computing accuracy per group
     accuracy_sellers = dict()
